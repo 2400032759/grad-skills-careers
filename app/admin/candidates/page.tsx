@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase';
 import { Candidate, Job } from '@/types';
 import { 
   Search, Download, ExternalLink, ChevronDown, 
-  MapPin, User, Mail, Phone, Calendar, Loader2, Users, Linkedin 
+  MapPin, User, Mail, Phone, Calendar, Loader2, Users, Linkedin, Globe
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -135,7 +135,7 @@ export default function AdminCandidatesPage() {
                                     <div className="flex items-center gap-2">
                                        <p className="font-bold text-gray-900 text-lg leading-none">{c.full_name}</p>
                                        {c.linkedin_url && (
-                                          <button 
+                                          <button
                                              onClick={() => window.open(c.linkedin_url, '_blank')}
                                              className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                                              title="View LinkedIn Profile"
@@ -143,6 +143,15 @@ export default function AdminCandidatesPage() {
                                              <Linkedin className="w-4 h-4 fill-current" />
                                           </button>
                                        )}
+                                        {c.portfolio_url && (
+                                           <button
+                                              onClick={() => window.open(c.portfolio_url, '_blank')}
+                                              className="p-1.5 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all"
+                                              title="View Portfolio"
+                                           >
+                                              <Globe className="w-4 h-4" />
+                                           </button>
+                                        )}
                                     </div>
                                     <div className="flex items-center gap-3 text-sm text-gray-500 font-medium">
                                        <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {c.email}</span>

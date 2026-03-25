@@ -15,7 +15,7 @@ export const ADMIN_EMAILS = [
 ];
 // ────────────────────────────────────────────────────────────
 
-export default function Navbar() {
+export default function Navbar({ hideAuth = false }: { hideAuth?: boolean }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user } = useUser();
   const { openAuth } = useAuth();
@@ -56,37 +56,41 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <div className="flex items-center gap-3 ml-4">
-              <Show when="signed-out">
-                <button 
-                  onClick={() => openAuth('sign-in')} 
-                  className="text-gray-600 hover:text-brand-purple font-bold transition-all text-sm"
-                >
-                  Sign In
-                </button>
-                <button 
-                  onClick={() => openAuth('sign-up')} 
-                  className="bg-gradient-to-r from-[#ff5757] to-[#8c52ff] text-white px-7 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 text-sm"
-                >
-                  Sign Up
-                </button>
-              </Show>
-              <Show when="signed-in">
-                {isAdmin && (
-                  <Link href="/admin" className="text-brand-purple font-bold transition-all text-sm hover:underline flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4" /> Admin
-                  </Link>
-                )}
-                <UserButton />
-              </Show>
-            </div>
+            {!hideAuth && (
+              <div className="flex items-center gap-3 ml-4">
+                <Show when="signed-out">
+                  <button 
+                    onClick={() => openAuth('sign-in')} 
+                    className="text-gray-600 hover:text-brand-purple font-bold transition-all text-sm"
+                  >
+                    Sign In
+                  </button>
+                  <button 
+                    onClick={() => openAuth('sign-up')} 
+                    className="bg-gradient-to-r from-[#ff5757] to-[#8c52ff] text-white px-7 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 text-sm"
+                  >
+                    Sign Up
+                  </button>
+                </Show>
+                <Show when="signed-in">
+                  {isAdmin && (
+                    <Link href="/admin" className="text-brand-purple font-bold transition-all text-sm hover:underline flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4" /> Admin
+                    </Link>
+                  )}
+                  <UserButton />
+                </Show>
+              </div>
+            )}
           </div>
 
           {/* Mobile Toggle */}
           <div className="flex md:hidden items-center gap-4">
-            <Show when="signed-in">
-              <UserButton />
-            </Show>
+            {!hideAuth && (
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
+            )}
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
               className="p-2 text-gray-600 hover:text-brand-purple transition-colors"
@@ -158,22 +162,24 @@ export default function Navbar() {
                 </Show>
               </div>
 
-              <Show when="signed-out">
-                <div className="mt-auto space-y-4 pt-8 border-t border-slate-100">
-                  <button 
-                    onClick={() => { setIsMobileMenuOpen(false); openAuth('sign-in'); }}
-                    className="w-full py-5 text-xl font-bold text-gray-600 hover:bg-slate-50 rounded-2xl transition-all"
-                  >
-                    Sign In
-                  </button>
-                  <button 
-                    onClick={() => { setIsMobileMenuOpen(false); openAuth('sign-up'); }}
-                    className="w-full py-5 bg-home-gradient text-white rounded-2xl font-bold text-xl shadow-lg"
-                  >
-                    Sign Up Now
-                  </button>
-                </div>
-              </Show>
+                {!hideAuth && (
+                  <Show when="signed-out">
+                    <div className="mt-auto space-y-4 pt-8 border-t border-slate-100">
+                      <button 
+                        onClick={() => { setIsMobileMenuOpen(false); openAuth('sign-in'); }}
+                        className="w-full py-5 text-xl font-bold text-gray-600 hover:bg-slate-50 rounded-2xl transition-all"
+                      >
+                        Sign In
+                      </button>
+                      <button 
+                        onClick={() => { setIsMobileMenuOpen(false); openAuth('sign-up'); }}
+                        className="w-full py-5 bg-home-gradient text-white rounded-2xl font-bold text-xl shadow-lg"
+                      >
+                        Sign Up Now
+                      </button>
+                    </div>
+                  </Show>
+                )}
             </motion.div>
           </>
         )}
