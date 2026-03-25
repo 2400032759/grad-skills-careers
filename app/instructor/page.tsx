@@ -38,7 +38,7 @@ export default function InstructorPage() {
         <div className="absolute top-1/2 -right-24 w-[40rem] h-[40rem] bg-blue-500/5 blur-[160px] rounded-full" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-0 md:px-6 pt-24">
+      <div className="max-w-7xl mx-auto pt-24">
         <AnimatePresence mode="wait">
           {!submitted ? (
             <motion.div
@@ -49,7 +49,7 @@ export default function InstructorPage() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* Header Section */}
-              <div className="text-center max-w-3xl mx-auto mb-12">
+              <div className="text-center max-w-3xl mx-auto mb-12 px-6">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -76,7 +76,7 @@ export default function InstructorPage() {
               </div>
 
               {/* Roles Grid Above Form */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 max-w-6xl mx-auto px-6">
                 {[
                   {
                     title: "Web Development",
