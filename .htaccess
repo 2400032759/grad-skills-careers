@@ -1,0 +1,6 @@
+﻿RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Next.js Proxy (if used on Hostinger)
+# RewriteRule ^(.*)$ http://localhost:3000/ [P,L]
