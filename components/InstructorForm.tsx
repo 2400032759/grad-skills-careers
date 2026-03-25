@@ -88,7 +88,7 @@ export default function InstructorForm({ onComplete }: Props) {
         </div>
         <div className="space-y-2">
           <label className="text-xs font-black text-gray-900 uppercase tracking-widest block ml-1">Email Address *</label>
-          <input required type="email" placeholder="[EMAIL_ADDRESS]"
+          <input required type="email" placeholder="Email ID"
             className="w-full px-7 py-5 rounded-[1.5rem] bg-slate-50 border-none ring-1 ring-slate-100 focus:ring-2 focus:ring-brand-purple transition-all font-medium"
             value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
         </div>
@@ -116,13 +116,13 @@ export default function InstructorForm({ onComplete }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-2">
           <label className="text-xs font-black text-gray-900 uppercase tracking-widest block ml-1">LinkedIn Profile</label>
-          <input type="text" placeholder="linkedin.com/in/..."
+          <input type="text" placeholder="LinkedIn profile (URL)"
             className="w-full px-7 py-5 rounded-[1.5rem] bg-slate-50 border-none ring-1 ring-slate-100 focus:ring-2 focus:ring-brand-purple transition-all font-medium"
             value={formData.linkedin} onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })} />
         </div>
         <div className="space-y-2">
           <label className="text-xs font-black text-gray-900 uppercase tracking-widest block ml-1">Portfolio (Optional)</label>
-          <input type="url" placeholder="https://yourportfolio.com"
+          <input type="url" placeholder="Portfolio (URL)"
             className="w-full px-7 py-5 rounded-[1.5rem] bg-slate-50 border-none ring-1 ring-slate-100 focus:ring-2 focus:ring-brand-purple transition-all font-medium"
             value={formData.portfolio} onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })} />
         </div>

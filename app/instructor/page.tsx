@@ -102,13 +102,15 @@ export default function InstructorPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 + idx * 0.1 }}
-                    className="group p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-premium hover:shadow-2xl transition-all hover:-translate-y-2"
+                    className="group flex flex-row md:flex-col items-start p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-white border border-slate-100 shadow-premium hover:shadow-2xl transition-all hover:-translate-y-2 gap-5 md:gap-0"
                   >
-                    <div className={`w-16 h-16 rounded-3xl ${role.color} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                      <role.icon className={`w-8 h-8 ${role.color.replace('bg-', 'text-')}`} />
+                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl ${role.color} bg-opacity-10 flex items-center justify-center mb-0 md:mb-6 flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                      <role.icon className={`w-6 h-6 md:w-8 md:h-8 ${role.color.replace('bg-', 'text-')}`} />
                     </div>
-                    <h3 className="text-2xl font-lexend font-bold text-gray-900 mb-3">{role.title}</h3>
-                    <p className="text-gray-500 font-medium leading-relaxed">{role.desc}</p>
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-lexend font-bold text-gray-900 mb-1 md:mb-3">{role.title}</h3>
+                      <p className="text-gray-500 text-sm md:text-base font-medium leading-relaxed">{role.desc}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
